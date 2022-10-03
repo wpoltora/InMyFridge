@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fridge"
+        android:icon="@drawable/ic_fridge_svgrepo_com"
+        android:title="Fridge"
+        />
+    <item
+        android:id="@+id/foods"
+        android:icon="@drawable/ic_baseline_restaurant_24"
+        android:title="Foods"
+        />
+    <item
+        android:id="@+id/recipes"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="Recipes"
+        />
+    <item
+        android:id="@+id/shopping"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Shopping"
+        />
+</menu>
