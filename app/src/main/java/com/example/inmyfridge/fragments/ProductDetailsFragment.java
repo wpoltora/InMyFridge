@@ -45,19 +45,14 @@ public class ProductDetailsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.product_details_unit_list);
+        ListView listView = view.findViewById(R.id.product_details_unit_list);
         ProductUnitsListAdapter adapter = new ProductUnitsListAdapter(this.getActivity(), this.product.getFoodUnitItems());
         listView.setAdapter(adapter);
 
         setTextViews(view);
 
-        Button addButton = (Button) view.findViewById(R.id.product_details_add_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mainActivity.replaceFragment(new NewProductUnitFragment(position), true);
-            }
-        });
+        Button addButton = view.findViewById(R.id.product_details_add_button);
+        addButton.setOnClickListener(view1 -> mainActivity.replaceFragment(new NewProductUnitFragment(position), true));
 
         return view;
     }

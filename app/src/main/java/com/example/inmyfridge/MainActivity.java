@@ -15,6 +15,8 @@ import android.widget.ImageView;
 
 import com.example.inmyfridge.databinding.ActivityMainBinding;
 import com.example.inmyfridge.fragments.NewFridgeItemFragment;
+import com.example.inmyfridge.fragments.NewRecipeFragment;
+import com.example.inmyfridge.fragments.NewRecipeProductSelectFragment;
 import com.example.inmyfridge.fragments.main.FoodsFragment;
 import com.example.inmyfridge.fragments.main.FridgeFragment;
 import com.example.inmyfridge.fragments.NewProductFragment;
@@ -88,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addToFridge(View view){replaceFragment(new NewFridgeItemFragment(), true);}
+
+    public void addRecipePage(View view){replaceFragment(new NewRecipeFragment(), true);}
+
+    public void selectProductsForRecipePage(View view){replaceFragment(new NewRecipeProductSelectFragment(), true);}
 
     public void returnToPrev(View view){
         onBackPressed();

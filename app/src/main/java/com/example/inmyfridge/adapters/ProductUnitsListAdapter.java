@@ -27,8 +27,8 @@ public class ProductUnitsListAdapter extends ArrayAdapter<ProductUnit> {
     public View getView(int position, View view, ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.list_item_product_units, null, true);
-        Boolean isLoose = productUnits.get(position).isLoose();
-        TextView weightText = (TextView) rowView.findViewById(R.id.list_item_product_units_weight);
+        boolean isLoose = productUnits.get(position).isLoose();
+        TextView weightText =  rowView.findViewById(R.id.list_item_product_units_weight);
         if (isLoose){
             weightText.setText("Loose");
         }
@@ -36,7 +36,7 @@ public class ProductUnitsListAdapter extends ArrayAdapter<ProductUnit> {
             weightText.setText(Integer.toString(productUnits.get(position).getWeight()));
         }
 
-        ImageView foodUnitImage = (ImageView) rowView.findViewById(R.id.list_item_product_units_image);
+        ImageView foodUnitImage = rowView.findViewById(R.id.list_item_product_units_image);
         foodUnitImage.setImageBitmap(productUnits.get(position).getImage());
         return rowView;
     }

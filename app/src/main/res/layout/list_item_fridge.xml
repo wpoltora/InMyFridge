@@ -27,7 +27,7 @@
             android:padding="2dp">
         </TextView>
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/list_item_fridge_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="24"
@@ -36,7 +36,15 @@
             android:layout_marginTop="5dp"
             android:padding="2dp">
         </TextView>
-
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/list_item_fridge_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:padding="2dp">
+    </TextView>
 </LinearLayout>

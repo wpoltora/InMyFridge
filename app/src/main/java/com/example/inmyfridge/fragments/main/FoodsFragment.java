@@ -36,16 +36,13 @@ public class FoodsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_foods, container, false);
-        ListView listView = (ListView) view.findViewById(R.id.foods_list);
+        ListView listView = view.findViewById(R.id.foods_list);
         ProductsListAdapter adapter = new ProductsListAdapter(this.getActivity(),  DataHolder.getInstance().productList);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Product product = (Product)adapterView.getItemAtPosition(i);
-                mainActivity.replaceFragment(new ProductDetailsFragment(product, i), true);
-            }
+        listView.setOnItemClickListener((adapterView, view1, i, l) -> {
+            Product product = (Product)adapterView.getItemAtPosition(i);
+            mainActivity.replaceFragment(new ProductDetailsFragment(product, i), true);
         });
         return view;
     }

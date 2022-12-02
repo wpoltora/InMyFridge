@@ -5,11 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.inmyfridge.R;
+import com.example.inmyfridge.data.DataHolder;
+import com.example.inmyfridge.models.FridgeItem;
 import com.example.inmyfridge.models.ProductUnit;
 import com.example.inmyfridge.models.Product;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,13 +46,33 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
         View resultView = convertView;
-        final String expandedListText = (String) Integer.toString(getChild(groupPosition, childPosition).getWeight());
+        final ProductUnit item = getChild(groupPosition, childPosition);
+
+        final String expandedListText = item.getWeight() + "g" +
+                "";
         if (resultView == null) {
             resultView = inflater.inflate(R.layout.expandable_foods_child, null);
         }
-        TextView expandedListTextView = (TextView) resultView.findViewById(R.id.expandable_foods_child_name);
+        TextView expandedListTextView = resultView.findViewById(R.id.expandable_foods_child_name);
         expandedListTextView.setText(expandedListText);
-        final ProductUnit item = getChild(groupPosition, childPosition);
+
+        final ImageButton addItemButton = resultView.findViewById(R.id.expandable_foods_child_add_button);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final FridgeItem fridgeItem =  DataHolder.getInstance().getFridgeItemById(item.getId());
+                ArrayList<FridgeItem> fridgeItems = DataHolder.getInstance().fridgeItemList;
+
+                if(fridgeItem != null){
+                    fridgeItem.increaseCount();
+                }
+                else {
+                    fridgeItems.add(new FridgeItem(item));
+                }
+            }
+        });
+
         return resultView;
     }
 
@@ -69,14 +94,13 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View theConvertView, ViewGroup parent) {
         View resultView = theConvertView;
-        String listTitle = (String) getGroup(groupPosition).getName();
+        String listTitle = getGroup(groupPosition).getName();
         if (resultView == null) {
             resultView = inflater.inflate(R.layout.expandable_foods_parent, null);
         }
 
-        TextView listTitleTextView = (TextView) resultView.findViewById(R.id.expandable_foods_parent_name);
+        TextView listTitleTextView = resultView.findViewById(R.id.expandable_foods_parent_name);
         listTitleTextView.setText(listTitle);
-        final Product item = getGroup(groupPosition);
 
         return resultView;
     }

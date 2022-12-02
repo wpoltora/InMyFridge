@@ -10,12 +10,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".fragments.main.FridgeFragment">
-        <ListView
-            android:id="@+id/fridge_list"
+        <ExpandableListView
+            android:id="@+id/fridge_item_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ListView>
-
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_fridge_item_label">
+        </ExpandableListView>
     </LinearLayout>
 
 <com.google.android.material.floatingactionbutton.FloatingActionButton

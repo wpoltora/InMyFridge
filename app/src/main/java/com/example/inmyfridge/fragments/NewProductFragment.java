@@ -2,6 +2,7 @@ package com.example.inmyfridge.fragments;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -34,14 +35,8 @@ public class NewProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_new_product, container, false);
-        Button buttonNewProductComplete = (Button) view.findViewById(R.id.new_product_add_button);
-        buttonNewProductComplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addNewProductToList(view);
-            }
-
-        });
+        Button buttonNewProductComplete = view.findViewById(R.id.new_product_add_button);
+        buttonNewProductComplete.setOnClickListener(view -> addNewProductToList(view));
         return view;
     }
 
@@ -84,8 +79,7 @@ public class NewProductFragment extends Fragment {
         ImageView imageView = view.findViewById(id);
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
         if(drawable != null) {
-            Bitmap bitmap = drawable.getBitmap();
-            return bitmap;
+            return drawable.getBitmap();
         }
         return null;
     }

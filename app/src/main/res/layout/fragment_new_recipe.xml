@@ -24,7 +24,7 @@
         android:layout_height="70dp"
         android:background="@color/design_default_color_primary"
         android:textColor="@color/white"
-        android:text="Add new product"
+        android:text="Add new recipe"
         android:gravity="center"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -46,110 +46,63 @@
             android:layout_marginTop="20dp"
             android:text="Name"
             android:textSize="20dp"
-            android:layout_marginHorizontal="20dp"></TextView>
+            android:layout_marginHorizontal="20dp" />
 
         <EditText
-            android:id="@+id/new_product_name_input"
+            android:id="@+id/new_recipe_name_input"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:layout_gravity="center"></EditText>
+            android:layout_gravity="center" />
 
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginHorizontal="20dp"
-            android:text="Nutritional values per 100g"
-            android:layout_marginTop="10dp"></TextView>
+            android:text="Products"
+            android:layout_marginTop="10dp" />
 
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/new_recipe_add_prdoucts_button"
+            android:src="@drawable/ic_baseline_add_24"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:weightSum="4"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:layout_marginRight="10dp"
+            android:onClick="selectProductsForRecipePage"
+            />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Kcal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Protein"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Carb"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fat"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:weightSum="4"
-            android:layout_marginHorizontal="20dp">
-        <EditText
-            android:id="@+id/new_product_kcal_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="4"
-            android:singleLine="true"
-            android:layout_weight="1"/>
+            android:text="Recipe"
+            android:layout_marginTop="10dp" />
 
         <EditText
-            android:id="@+id/new_product_protein_input"
-            android:layout_width="match_parent"
+            android:id="@+id/new_recipe_howto_text"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|start"
+            android:maxLines="10"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="4"
-            android:singleLine="true"
-            android:layout_weight="1"/>
+            android:layout_width="match_parent"
+            android:scrollbars="vertical"
+        />
 
-        <EditText
-            android:id="@+id/new_product_carb_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="4"
-            android:singleLine="true"
-            android:layout_weight="1"/>
-
-        <EditText
-            android:id="@+id/new_product_fat_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="4"
-            android:singleLine="true"
-            android:layout_weight="1"/>
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/new_product_image_input"
+                android:id="@+id/new_recipe_image_input"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:onClick="selectProductImage"
@@ -163,14 +116,14 @@
             </ImageView>
 
             <Button
-                android:id="@+id/new_product_add_button"
+                android:id="@+id/new_recipe_add_button"
                 android:layout_width="126dp"
                 android:layout_height="wrap_content"
                 android:text="add to list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/new_product_image_input" />
+                app:layout_constraintTop_toBottomOf="@+id/new_recipe_image_input" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

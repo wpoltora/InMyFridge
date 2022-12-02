@@ -28,6 +28,7 @@ public class ProductUnit {
         this.image = builder.image;
         this.barcode = builder.barcode;
         this.isLoose = builder.isLoose;
+        this.parentId = builder.parentId;
     }
 
     public int getWeight() {
@@ -65,6 +66,8 @@ public class ProductUnit {
     public UUID getId(){
         return this.id;
     }
+
+    public UUID getParentId(){return this.parentId;}
 
     /**BUILDER*/
     public static class ProductUnitBuilder{

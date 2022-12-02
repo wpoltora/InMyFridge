@@ -42,24 +42,16 @@ public class NewProductUnitFragment extends Fragment {
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_new_unit, container, false);
 
-        Button finishButton = (Button) view.findViewById(R.id.new_unit_add_button);
-        finishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addNewUnitToProduct(view);
+        Button finishButton =  view.findViewById(R.id.new_unit_add_button);
+        finishButton.setOnClickListener(view -> addNewUnitToProduct(view));
+        CheckBox looseCheckBox = view.findViewById(R.id.new_unit_loose_checkbox);
+        LinearLayout weightInputWrapper = view.findViewById(R.id.new_unit_weight_input_wrapper);
+        looseCheckBox.setOnClickListener(view -> {
+            if(looseCheckBox.isChecked()){
+                weightInputWrapper.setVisibility(View.INVISIBLE);
             }
-        });
-        CheckBox looseCheckBox = (CheckBox)view.findViewById(R.id.new_unit_loose_checkbox);
-        LinearLayout weightInputWrapper = (LinearLayout) view.findViewById(R.id.new_unit_weight_input_wrapper);
-        looseCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(looseCheckBox.isChecked()){
-                    weightInputWrapper.setVisibility(View.INVISIBLE);
-                }
-                else{
-                    weightInputWrapper.setVisibility(View.VISIBLE);
-                }
+            else{
+                weightInputWrapper.setVisibility(View.VISIBLE);
             }
         });
         // Inflate the layout for this fragment
@@ -88,8 +80,7 @@ public class NewProductUnitFragment extends Fragment {
     public Bitmap parseProductImage(int id){
         ImageView imageView = view.findViewById(id);
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        return bitmap;
+        return drawable.getBitmap();
     }
 
 }

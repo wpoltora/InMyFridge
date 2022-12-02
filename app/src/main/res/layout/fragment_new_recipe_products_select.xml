@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/new_fridge_item_return_button"
+        android:id="@+id/new_recipe_product_select_return_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,23 +19,26 @@
         android:onClick="returnToPrev"/>
 
     <TextView
-        android:id="@+id/new_fridge_item_label"
+        android:id="@+id/new_recipe_product_select_label"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@color/design_default_color_primary"
         android:textColor="@color/white"
-        android:text="Add product to fridge"
+        android:text="Select products"
         android:gravity="center"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ExpandableListView
-        android:id="@+id/new_fridge_item_foods_list"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/new_fridge_item_label">
-        </ExpandableListView>
+        app:layout_constraintTop_toBottomOf="@id/new_recipe_product_select_label">
 
+        <ListView
+            android:id="@+id/new_recipe_product_select_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

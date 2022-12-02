@@ -1,24 +1,27 @@
 package com.example.inmyfridge.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+
+import com.example.inmyfridge.MainActivity;
 import com.example.inmyfridge.R;
 import com.example.inmyfridge.adapters.ExpandableListViewAdapter;
 import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.models.FridgeItem;
+import com.example.inmyfridge.models.Recipe;
 
+import java.util.ArrayList;
 
-public class NewFridgeItemFragment extends Fragment {
+public class NewRecipeFragment extends Fragment {
 
-    public NewFridgeItemFragment() {
+    public NewRecipeFragment() {
         // Required empty public constructor
     }
 
@@ -30,10 +33,11 @@ public class NewFridgeItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_fridge_item, container, false);
-        ExpandableListView listView = view.findViewById(R.id.new_fridge_item_foods_list);
-        ExpandableListViewAdapter adapter = new ExpandableListViewAdapter(this.getActivity(),  DataHolder.getInstance().productList);
-        listView.setAdapter(adapter);
+        View view = inflater.inflate(R.layout.fragment_new_recipe
+                , container, false);
+        Recipe recipe = new Recipe("empty", null, new ArrayList<>());
+
+
         return view;
     }
 }
