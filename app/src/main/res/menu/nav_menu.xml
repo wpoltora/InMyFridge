@@ -17,6 +17,11 @@
         android:title="Recipes"
         />
     <item
+        android:id="@+id/tracker"
+        android:icon="@drawable/ic_baseline_browse_gallery_24"
+        android:title="Tracker"
+        />
+    <item
         android:id="@+id/shopping"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="Shopping"

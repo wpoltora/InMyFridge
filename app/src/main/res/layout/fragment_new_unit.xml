@@ -21,7 +21,7 @@
         android:id="@+id/new_unit_item_label"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/design_default_color_primary"
+        android:background="?attr/topBarBg"
         android:textColor="@color/white"
         android:text="Add product to fridge"
         android:gravity="center"
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        tools:context=".fragments.NewProductFragment"
+        tools:context=".foods.fragments.NewProductFragment"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/new_unit_item_label"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,12 +75,14 @@
             <ImageView
                 android:id="@+id/new_unit_image_input"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="50dp"
                 android:onClick="selectUnitImage"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                app:tint="?attr/colorSecondary">
 
             </ImageView>
 

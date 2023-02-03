@@ -8,20 +8,23 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.inmyfridge.databinding.ActivityMainBinding;
-import com.example.inmyfridge.fragments.NewFridgeItemFragment;
-import com.example.inmyfridge.fragments.NewRecipeFragment;
-import com.example.inmyfridge.fragments.NewRecipeProductSelectFragment;
-import com.example.inmyfridge.fragments.main.FoodsFragment;
-import com.example.inmyfridge.fragments.main.FridgeFragment;
-import com.example.inmyfridge.fragments.NewProductFragment;
-import com.example.inmyfridge.fragments.main.RecipeFragment;
-import com.example.inmyfridge.fragments.main.ShoppingFragment;
+import com.example.inmyfridge.fridge.fragments.NewFridgeItemFragment;
+import com.example.inmyfridge.recipes.NewRecipeActivity;
+import com.example.inmyfridge.recipes.fragments.NewRecipeFragment;
+import com.example.inmyfridge.recipes.fragments.NewRecipeProductSelectFragment;
+import com.example.inmyfridge.foods.fragments.FoodsFragment;
+import com.example.inmyfridge.fridge.fragments.FridgeFragment;
+import com.example.inmyfridge.foods.fragments.NewProductFragment;
+import com.example.inmyfridge.recipes.fragments.RecipeFragment;
+import com.example.inmyfridge.shopping.ShoppingFragment;
+import com.example.inmyfridge.tracking.fragments.TrackerFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.foods:
                     replaceFragment(new FoodsFragment(), false);
                     break;
+                case R.id.tracker:
+                    replaceFragment(new TrackerFragment(), false);
+                    break;
                 case R.id.shopping:
                     replaceFragment(new ShoppingFragment(), false);
                     break;
@@ -61,15 +67,28 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == 1 && resultCode == RESULT_OK && data != null){
             Bundle bundle = data.getExtras();
             Bitmap photo = (Bitmap) bundle.get("data");
+            int width = photo.getWidth();
+            int height = photo.getHeight();
+            int newDimension = Math.min(width, height);
+            Bitmap square = Bitmap.createBitmap(photo, (width - newDimension) / 2, (height - newDimension) / 2, newDimension, newDimension);
+
             ImageView imageView = findViewById(R.id.new_product_image_input);
-            imageView.setImageBitmap(photo);
+            imageView.setImageBitmap(square);
         }
 
         if(requestCode == 2 && resultCode == RESULT_OK && data != null){
             Bundle bundle = data.getExtras();
             Bitmap photo = (Bitmap) bundle.get("data");
+            int width = photo.getWidth();
+            int height = photo.getHeight();
+            int newDimension = Math.min(width, height);
+            Bitmap square = Bitmap.createBitmap(photo, (width - newDimension) / 2, (height - newDimension) / 2, newDimension, newDimension);
             ImageView imageView = findViewById(R.id.new_unit_image_input);
-            imageView.setImageBitmap(photo);
+            imageView.setImageBitmap(square);
+        }
+
+        if(requestCode==10){
+            replaceFragment(new RecipeFragment(), false);
         }
     }
     /**------------------------------------------------------------------*/
@@ -91,9 +110,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void addToFridge(View view){replaceFragment(new NewFridgeItemFragment(), true);}
 
-    public void addRecipePage(View view){replaceFragment(new NewRecipeFragment(), true);}
+    public void addRecipePage(View view){
+        Intent switchActivityIntent = new Intent(this, NewRecipeActivity.class);
+        startActivityForResult(switchActivityIntent,10);}
 
-    public void selectProductsForRecipePage(View view){replaceFragment(new NewRecipeProductSelectFragment(), true);}
+
 
     public void returnToPrev(View view){
         onBackPressed();

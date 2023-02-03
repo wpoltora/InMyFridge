@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.InMyFridge" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="fontFamily">@font/open_sans</item>
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -12,5 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="inputBg">@color/white</item>
+        <item name="topBarBg">@color/purple_500</item>
     </style>
 </resources>
