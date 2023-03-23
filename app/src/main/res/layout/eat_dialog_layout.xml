@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal"
+    >
+    <TextView
+        android:id="@+id/eat_dialog_name"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Title"
+        android:layout_gravity="center_horizontal"
+        >
+    </TextView>
+
+    <EditText
+        android:id="@+id/eat_dialog_amount"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_gravity="center_horizontal"
+        android:inputType="number"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+    </EditText>
+
+</LinearLayout>

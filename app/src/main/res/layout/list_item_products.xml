@@ -1,47 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:descendantFocusability="blocksDescendants" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/list_item_products_image"
-        android:layout_width="100dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:padding="5dp"
-        ></ImageView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/frame"
+        android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal"
-        android:layout_gravity="center_vertical">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:background="?attr/colorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/list_item_products_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:text="Potato"
+
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:padding="2dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/lighter_grey_dark"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            >
-        </TextView>
-    </LinearLayout>
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
-    <ImageButton
-        android:id="@+id/list_item_products_basket_button"
-        android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/list_item_products_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_item_products_button_panel"
+        android:visibility="gone"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/ic_baseline_shopping_cart_24"
-        android:layout_gravity="center_vertical"
-        android:backgroundTint="?attr/colorPrimary">
-    </ImageButton>
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+        android:gravity="center"
+        android:layout_marginVertical="10dp">
+
+        <ImageButton
+            android:id="@+id/list_item_products_fridge_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:backgroundTint="#3FC8BC"
+            android:src="@drawable/ic_fridge_svgrepo_com2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/list_item_products_eat_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:backgroundTint="?attr/colorSecondary"
+            android:src="@drawable/ic_baseline_restaurant_24"
+            app:layout_constraintStart_toEndOf="@+id/list_item_products_fridge_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/list_item_products_basket_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:backgroundTint="?attr/colorPrimary"
+            android:src="@drawable/ic_baseline_shopping_cart_24"
+            app:layout_constraintStart_toEndOf="@+id/list_item_products_eat_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/list_item_products_settings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:backgroundTint="#8697F4"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:layout_constraintStart_toEndOf="@+id/list_item_products_basket_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/list_item_products_remove_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:backgroundTint="@color/red"
+            android:src="@drawable/ic_baseline_delete_forever_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants" >
 
@@ -10,34 +11,33 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:padding="5dp"
-        ></ImageView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/list_item_recipe_products_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/list_item_recipe_products_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:padding="2dp">
-        </TextView>
-    </LinearLayout>
+        android:layout_marginStart="20dp"
+        android:padding="2dp"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_item_recipe_products_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/list_item_recipe_products_amount"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="amount">
-    </TextView>
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        android:text="amount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_item_recipe_products_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.512" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

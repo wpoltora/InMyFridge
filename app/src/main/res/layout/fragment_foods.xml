@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,18 +20,21 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/custom_input"
             android:drawableLeft="@drawable/ic_baseline_search_24"
             android:drawableTint="?attr/colorPrimary"
             android:inputType="text"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"></EditText>
+            android:paddingEnd="12dp" />
 
         <ListView
             android:id="@+id/foods_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -46,7 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp"
-        app:backgroundTint="?attr/colorSecondary"
-        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+        app:backgroundTint="?attr/colorSecondary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

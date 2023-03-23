@@ -1,28 +1,23 @@
 package com.example.inmyfridge.recipes.objectadapters;
 
-import com.example.inmyfridge.foods.models.Product;
-
 import java.util.UUID;
 
 public class ProductRecipeAdapter {
-    Product product;
+    UUID productID;
     int requiredAmount;
     String type;
-    private enum type{
-        GRAMS, UNITS
-    }
 
-    public ProductRecipeAdapter(Product product, int requiredAmount){
-        this.product = product;
+    public ProductRecipeAdapter(UUID productID, int requiredAmount){
+        this.productID = productID;
         this.requiredAmount = requiredAmount;
     }
 
-    public Product getProduct() {
-        return product;
+    public UUID getProductID() {
+        return productID;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductID(UUID productID) {
+        this.productID = productID;
     }
 
     public int getRequiredAmount() {
@@ -35,6 +30,10 @@ public class ProductRecipeAdapter {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }
 

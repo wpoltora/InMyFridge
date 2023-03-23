@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/list_item_product_units_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/list_item_product_units_image">
-    </ImageView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView android:layout_width="60dp"
+    <TextView
+        android:id="@+id/list_item_product_units_weight"
+        android:layout_width="60dp"
         android:layout_height="match_parent"
-        android:text="560g" android:textAlignment="center" android:gravity="center"
-        android:id="@+id/list_item_product_units_weight">
-    </TextView>
+        android:gravity="center"
+        android:text="560g"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_item_product_units_image"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/list_item_product_units_barcode"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/ic_baseline_qr_code_scanner_24">
+        android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_item_product_units_weight"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </Button>
+    <ImageButton
+        android:layout_marginEnd="20dp"
+        android:id="@+id/list_item_product_units_remove"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_delete_forever_24"
+        android:background="@drawable/ic_baseline_circle_24"
+        android:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

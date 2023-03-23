@@ -6,4 +6,8 @@
         <item>grams</item>
         <item>pieces</item>
     </string-array>
+    <string-array name="recipe_unit_array">
+        <item>100g</item>
+        <item>total</item>
+    </string-array>
 </resources>

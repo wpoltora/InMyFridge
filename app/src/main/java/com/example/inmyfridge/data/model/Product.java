@@ -1,11 +1,18 @@
-package com.example.inmyfridge.foods.models;
+package com.example.inmyfridge.data.model;
 
 import android.graphics.Bitmap;
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
+@Entity
 public class Product {
+    @NonNull
+    @PrimaryKey
     private UUID id;
     private String name;
     private int kcal;
@@ -13,7 +20,7 @@ public class Product {
     private int carb;
     private int fat;
     private Bitmap image;
-    private ArrayList<ProductUnit> productUnits;
+    private boolean visible;
 
     public Product(String name, int kcal, int protein, int carb, int fat, Bitmap image) {
         this.id = UUID.randomUUID();
@@ -23,7 +30,7 @@ public class Product {
         this.carb = carb;
         this.fat = fat;
         this.image = image;
-        this.productUnits = new ArrayList<>();
+        this.visible = true;
     }
 
     private Product(ProductBuilder builder){
@@ -34,11 +41,18 @@ public class Product {
         this.carb = builder.carb;
         this.fat = builder.fat;
         this.image = builder.image;
-        this.productUnits = new ArrayList<>();
+        this.visible = true;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setId(@NonNull UUID id) {
+        this.id = id;
+    }
+
+    public void setProductUnits(ArrayList<ProductUnit> productUnits) {
     }
 
     public void setName(String name) {
@@ -61,19 +75,23 @@ public class Product {
         return fat;
     }
 
-    public ArrayList<ProductUnit> getFoodUnitItems() {
-        return productUnits;
-    }
-
+    @NonNull
     public UUID getId(){
         return this.id;
     }
 
 
-
     public Bitmap getImage(){return image;}
     /**---------------------------------------------------------*/
 
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     /**BUILDER*/
     public static class ProductBuilder{
@@ -112,8 +130,7 @@ public class Product {
         }
 
         public Product build(){
-            Product product = new Product(this);
-            return product;
+            return new Product(this);
         }
 
     }

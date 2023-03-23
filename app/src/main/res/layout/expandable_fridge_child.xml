@@ -1,26 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/expandable_fridge_child_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/ic_baseline_remove_24"
+        android:backgroundTint="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/expandable_fridge_child_count"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/expandable_fridge_child_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="60g"/>
+        android:text="60g"
+        android:textSize="20sp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/expandable_fridge_child_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:layout_marginEnd="16dp"
+        android:width="50dp"
+        android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="x2"/>
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:text="x2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/expandable_fridge_child_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_baseline_add_24"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/expandable_fridge_child_count"
+        app:layout_constraintTop_toTopOf="parent"></ImageButton>
+
+    <ImageButton
+        android:id="@+id/expandable_fridge_child_accept"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_baseline_check_circle_24"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="20dp"></ImageButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.foods.models.Product;
+import com.example.inmyfridge.data.model.Product;
+import com.example.inmyfridge.data.model.ProductUnit;
+import com.example.inmyfridge.foods.viewmodels.NewProductViewModel;
 
 /**This is a fragment used for adding a new product to database*/
 public class NewProductFragment extends Fragment {
-
+    NewProductViewModel viewModel;
     private View view;
 
     public NewProductFragment() {
@@ -29,6 +31,7 @@ public class NewProductFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(NewProductViewModel.class);
     }
 
     @Override
@@ -36,7 +39,7 @@ public class NewProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_new_product, container, false);
         Button buttonNewProductComplete = view.findViewById(R.id.new_product_add_button);
-        buttonNewProductComplete.setOnClickListener(view -> addNewProductToList(view));
+        buttonNewProductComplete.setOnClickListener(this::addNewProductToList);
         return view;
     }
 
@@ -59,7 +62,16 @@ public class NewProductFragment extends Fragment {
                 .fat(fat)
                 .image(image)
                 .build();
-        DataHolder.getInstance().productList.add(product);
+       // DataHolder.getInstance().productList.add(product);
+        viewModel.insertProduct(product);
+        ProductUnit productUnit = new ProductUnit.ProductUnitBuilder()
+                .weight(1)
+                .isLoose(true)
+                .image(null)
+                .barcode(null)
+                .parentId(product.getId())
+                .build();
+        viewModel.insertProductUnit(productUnit);
         getParentFragmentManager().popBackStack();
     }
 
@@ -86,6 +98,4 @@ public class NewProductFragment extends Fragment {
         }
         return null;
     }
-    /**------------------------------------------------------------*/
-
 }

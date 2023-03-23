@@ -12,9 +12,6 @@ import android.widget.ListView;
 import com.example.inmyfridge.MainActivity;
 import com.example.inmyfridge.R;
 import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.foods.fragments.ProductDetailsFragment;
-import com.example.inmyfridge.foods.models.Product;
-import com.example.inmyfridge.foods.viewadapters.ProductListAdapter;
 import com.example.inmyfridge.shopping.viewadapters.ShoppingListAdapter;
 
 

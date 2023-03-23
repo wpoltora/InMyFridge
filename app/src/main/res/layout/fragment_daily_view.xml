@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".tracking.fragments.WeeklyViewFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp">
+
+    <ImageButton
+        android:id="@+id/tracker_date_back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:backgroundTint="?attr/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/tracker_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tracker_date"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:paddingHorizontal="50dp"
+        android:text="Date"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tracker_date_back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/tracker_date_next_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_arrow_forward_24"
+        android:backgroundTint="?attr/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/tracker_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/tracker_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tracker_date_back_button">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/ic_baseline_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/daily_view_calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:text="22"
+                android:textColor="@color/black"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.388" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:text="Total calories"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view4"
+                app:layout_constraintVertical_bias="0.654" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View style="@style/Divider" android:layout_marginVertical="10dp" android:layout_marginHorizontal="20dp"
+            android:layout_height="2dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="10dp"
+                android:layout_height="60dp"
+                android:background="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/daily_view_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="80g"
+                android:textSize="40sp"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protein"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/daily_view_protein"
+                app:layout_constraintTop_toBottomOf="@+id/daily_view_protein" />
+
+            <TextView
+                android:id="@+id/daily_view_protein_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="20%"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view8"
+                app:layout_constraintTop_toTopOf="parent">
+            </TextView>
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="?attr/colorSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="10dp"
+                android:layout_height="60dp"
+                android:background="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/daily_view_carbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="80g"
+                android:textSize="40sp"
+                app:layout_constraintStart_toEndOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carbs"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/daily_view_carbs"
+                app:layout_constraintTop_toBottomOf="@+id/daily_view_carbs" />
+
+            <TextView
+                android:id="@+id/daily_view_carb_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="20%"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="?attr/colorSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="10dp"
+                android:layout_height="60dp"
+                android:background="?attr/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/daily_view_fats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="80g"
+                android:textSize="40sp"
+                app:layout_constraintStart_toEndOf="@+id/view3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fats"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/daily_view_fats"
+                app:layout_constraintTop_toBottomOf="@+id/daily_view_fats" />
+
+            <TextView
+                android:id="@+id/daily_view_fat_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="20%"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/view6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="?attr/colorSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

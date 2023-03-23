@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.foods.models.Product;
+import com.example.inmyfridge.data.model.Product;
 
 import java.util.ArrayList;
 
@@ -33,12 +32,9 @@ public class ShoppingListAdapter extends ArrayAdapter<Product> {
         ImageView foodImage = rowView.findViewById(R.id.list_item_shopping_image);
         foodImage.setImageBitmap(shoppingList.get(position).getImage());
         ImageButton removeButton = rowView.findViewById(R.id.list_item_shopping_remove_button);
-        removeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shoppingList.remove(position);
-                notifyDataSetChanged();
-            }
+        removeButton.setOnClickListener(view1 -> {
+            shoppingList.remove(position);
+            notifyDataSetChanged();
         });
         return rowView;
     }

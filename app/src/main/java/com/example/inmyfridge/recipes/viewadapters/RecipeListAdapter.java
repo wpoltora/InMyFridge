@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.recipes.models.Recipe;
+import com.example.inmyfridge.data.model.Recipe;
 
 import java.util.ArrayList;
 

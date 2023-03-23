@@ -6,15 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.foods.models.ProductUnit;
-import com.example.inmyfridge.fridge.objectadapters.ProductFridgeItemAdapter;
-import com.example.inmyfridge.fridge.models.FridgeItem;
-import com.example.inmyfridge.foods.models.Product;
+import com.example.inmyfridge.data.model.ProductUnit;
+import com.example.inmyfridge.fridge.objectadapters.ProductProductUnitAdapter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -22,23 +20,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ExpandableFridgeListAdapter extends BaseExpandableListAdapter {
-    private final List<ProductFridgeItemAdapter> itemList = new ArrayList<>();
+    private final List<ProductProductUnitAdapter> itemList;
     private final LayoutInflater inflater;
-    private final List<ProductFridgeItemAdapter> itemListCopy;
+    private final List<ProductProductUnitAdapter> itemListCopy;
+    private ItemCallback callback;
 
-    public ExpandableFridgeListAdapter (Context context) {
-
-        for (FridgeItem fridgeItem:DataHolder.getInstance().fridgeItemList) {
-            this.itemList.add(new ProductFridgeItemAdapter(fridgeItem.getProduct()));
-        }
+    public ExpandableFridgeListAdapter (Context context, List<ProductProductUnitAdapter> itemList, ItemCallback callback) {
+        this.itemList = itemList;
+        this.callback = callback;
         itemList.sort((Comparator.comparing(t -> t.getProduct().getName().toLowerCase())));
         this.inflater = LayoutInflater.from(context);
         itemListCopy =  new ArrayList<>(itemList);
     }
 
     @Override
-    public FridgeItem getChild(int groupPosition, int childPosition) {
-        return itemList.get(groupPosition).getFridgeItems().get(childPosition);
+    public ProductUnit getChild(int groupPosition, int childPosition) {
+        return itemList.get(groupPosition).getProductUnits().get(childPosition);
     }
 
     @Override
@@ -48,29 +45,60 @@ public class ExpandableFridgeListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return itemList.get(groupPosition).getFridgeItems().size();
+        return itemList.get(groupPosition).getProductUnits().size();
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
         View resultView = convertView;
-        final FridgeItem item = getChild(groupPosition, childPosition);
+        final ProductUnit item = getChild(groupPosition, childPosition);
 
         if (resultView == null) {
             resultView = inflater.inflate(R.layout.expandable_fridge_child, null);
         }
 
         TextView weightTextView = resultView.findViewById(R.id.expandable_fridge_child_weight);
-        weightTextView.setText(item.getProductUnit().getWeight()+"g");
         TextView countTextView = resultView.findViewById(R.id.expandable_fridge_child_count);
-        countTextView.setText("x"+item.getCount());
+        ImageButton minus = resultView.findViewById(R.id.expandable_fridge_child_minus);
+        ImageButton plus = resultView.findViewById(R.id.expandable_fridge_child_plus);
+        ImageButton accept = resultView.findViewById(R.id.expandable_fridge_child_accept);
+
+        plus.setOnClickListener(view -> {
+            accept.setVisibility(View.VISIBLE);
+            item.increaseCount(1);
+            notifyDataSetChanged();
+        });
+
+        minus.setOnClickListener(view -> {
+            accept.setVisibility(View.VISIBLE);
+            if(item.getCount() > 0) {
+                item.decreaseCount(1);
+            }
+            notifyDataSetChanged();
+        });
+
+        accept.setOnClickListener(view -> {
+                callback.onItemUpdated(item);
+            accept.setVisibility(View.GONE);
+        });
+
+
+        if(!item.isLoose()) {
+            weightTextView.setText(item.getWeight() + "g");
+            countTextView.setText("x" + item.getCount());
+        }
+        else {
+            weightTextView.setText("Loose");
+            countTextView.setText(item.getCount()+"g");
+        }
+
 
 
         return resultView;
     }
 
     @Override
-    public ProductFridgeItemAdapter getGroup(int groupPosition) {
+    public ProductProductUnitAdapter getGroup(int groupPosition) {
         return itemList.get(groupPosition);
     }
 
@@ -124,5 +152,9 @@ public class ExpandableFridgeListAdapter extends BaseExpandableListAdapter {
                     .collect(Collectors.toList()));
         }
         notifyDataSetChanged();
+    }
+
+    public interface ItemCallback {
+        void onItemUpdated(ProductUnit item);
     }
 }

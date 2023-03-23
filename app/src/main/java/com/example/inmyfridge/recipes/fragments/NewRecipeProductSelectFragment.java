@@ -6,16 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.inmyfridge.R;
+import com.example.inmyfridge.recipes.NewRecipeActivity;
 import com.example.inmyfridge.recipes.viewadapters.RecipeProductListAdapter;
-import com.example.inmyfridge.data.DataHolder;
-
-import java.util.UUID;
 
 public class NewRecipeProductSelectFragment extends Fragment {
 
@@ -38,7 +33,7 @@ public class NewRecipeProductSelectFragment extends Fragment {
                 , container, false);
 
         ListView listView = view.findViewById(R.id.new_recipe_product_select_list);
-        RecipeProductListAdapter adapter = new RecipeProductListAdapter(this.getActivity(),  DataHolder.getInstance().productList);
+        RecipeProductListAdapter adapter = new RecipeProductListAdapter(this.getActivity(), ((NewRecipeActivity) getActivity()).getProducts());
         listView.setAdapter(adapter);
         return view;
     }

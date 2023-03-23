@@ -4,42 +4,39 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.inmyfridge.MainActivity;
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.foods.fragments.NewProductUnitFragment;
-import com.example.inmyfridge.foods.models.Product;
-import com.example.inmyfridge.foods.viewadapters.ProductUnitListAdapter;
-import com.example.inmyfridge.recipes.models.Recipe;
+import com.example.inmyfridge.data.model.Product;
+import com.example.inmyfridge.data.model.Recipe;
 import com.example.inmyfridge.recipes.viewadapters.RecipeDetailsListAdapter;
+import com.example.inmyfridge.recipes.viewmodels.RecipeDetailsViewModel;
 
-public class RecipeDetailsFragment extends Fragment {
+import java.util.UUID;
 
-
-
+public class RecipeDetailsFragment extends Fragment implements RecipeDetailsListAdapter.ItemCallback{
+    private RecipeDetailsViewModel viewModel;
     private Recipe recipe;
-    //stored value of foodItem position in array
-    private int position;
     private MainActivity mainActivity;
 
     public RecipeDetailsFragment() {
         // Required empty public constructor
     }
 
-    public RecipeDetailsFragment(Recipe recipe, int position){
+    public RecipeDetailsFragment(Recipe recipe){
         this.recipe = recipe;
-        this.position = position;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.mainActivity = (MainActivity) getActivity();
+        viewModel = ViewModelProviders.of(this).get(RecipeDetailsViewModel.class);
     }
 
     @Override
@@ -48,7 +45,7 @@ public class RecipeDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
 
         ListView listView = view.findViewById(R.id.recipe_details_ingredient_list);
-        RecipeDetailsListAdapter adapter = new RecipeDetailsListAdapter(this.getActivity(), this.recipe.getProducts());
+        RecipeDetailsListAdapter adapter = new RecipeDetailsListAdapter(this.getActivity(), this.recipe.getProducts(), this);
         listView.setAdapter(adapter);
         setTextViews(view);
 
@@ -61,4 +58,8 @@ public class RecipeDetailsFragment extends Fragment {
     }
 
 
+    @Override
+    public Product getProductByID(UUID id) {
+       return viewModel.getProductByID(id);
+    }
 }

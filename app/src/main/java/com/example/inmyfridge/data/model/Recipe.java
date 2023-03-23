@@ -1,14 +1,21 @@
-package com.example.inmyfridge.recipes.models;
+package com.example.inmyfridge.data.model;
 
 import android.graphics.Bitmap;
 
-import com.example.inmyfridge.foods.models.Product;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.inmyfridge.recipes.objectadapters.ProductRecipeAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
+@Entity
 public class Recipe {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    private int id;
     private String name;
     private String recipe;
     private ArrayList<ProductRecipeAdapter> products;
@@ -21,6 +28,22 @@ public class Recipe {
         this.recipe = recipe;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+    public void setProducts(ArrayList<ProductRecipeAdapter> products) {
+        this.products = products;
+    }
+
     public Bitmap getImage() {
         return image;
     }
@@ -29,8 +52,8 @@ public class Recipe {
         return name;
     }
 
-    public void addProductToList(Product product, int requiredAmount){
-        products.add(new ProductRecipeAdapter(product, requiredAmount));
+    public void addProductToList(UUID productID, int requiredAmount){
+        products.add(new ProductRecipeAdapter(productID, requiredAmount));
     }
 
     public void setName(String name) {

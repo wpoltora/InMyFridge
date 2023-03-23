@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/new_product_return_button"
@@ -22,13 +25,13 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="?attr/topBarBg"
         android:textColor="@color/white"
         android:text="Add new recipe"
         android:gravity="center"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/frame"></TextView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -97,12 +100,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp">
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/new_recipe_selected_products_list"
                 >
-            </ListView>
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
         <View style="@style/Divider" android:layout_marginBottom="10dp" android:layout_marginHorizontal="20dp"
             android:layout_height="2dp"/>
@@ -158,3 +161,4 @@
             android:layout_gravity="center"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

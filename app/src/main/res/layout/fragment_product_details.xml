@@ -32,12 +32,12 @@
         android:id="@+id/product_details_name"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="?attr/topBarBg"
         android:textColor="@color/white"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/frame" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,28 +53,34 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nutritional values"
+
+        android:text="Nutritional values in 100g"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:id="@+id/product_details_nutrition_label"
-        android:layout_marginHorizontal="20dp">
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp">
     </TextView>
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_width="match_parent"
         android:gravity="center"
         android:weightSum="4"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/product_details_nutrition_labels"
+        android:background="@drawable/custom_input"
+
         >
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kcal"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:textStyle="bold"
+            android:gravity="center"
+
             />
 
         <TextView
@@ -82,24 +88,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Protein"
+            android:textSize="20sp"
             android:layout_weight="1"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Carb"
+            android:textSize="20sp"
             android:layout_weight="1"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fat"
+            android:textSize="20sp"
             android:layout_weight="1"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:gravity="center" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="wrap_content"
@@ -109,6 +121,7 @@
         android:gravity="center"
         android:weightSum="4"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         >
 
         <TextView
@@ -116,46 +129,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-
-            android:layout_weight="1"/>
+            android:textSize="22sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            />
 
         <TextView
             android:id="@+id/product_details_protein"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_weight="1"/>
+            android:textSize="22sp"
+            android:layout_weight="1"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/product_details_carb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_weight="1"/>
+            android:textSize="22sp"
+            android:layout_weight="1"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/product_details_fat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:layout_weight="1"/>
+            android:textSize="22sp"
+            android:layout_weight="1"
+            android:gravity="center"/>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Product units"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="20dp">
+        android:textSize="20sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp">
     </TextView>
+        <View style="@style/Divider" android:layout_marginVertical="10dp" android:layout_marginHorizontal="20dp"
+            android:layout_height="2dp"/>
     <LinearLayout
         android:id="@+id/product_details_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp">
-
-
+        android:layout_marginHorizontal="20dp">
 
         <LinearLayout
             android:id="@+id/product_details_linearLayout2"
@@ -165,7 +187,7 @@
             <ListView
                 android:id="@+id/product_details_unit_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>

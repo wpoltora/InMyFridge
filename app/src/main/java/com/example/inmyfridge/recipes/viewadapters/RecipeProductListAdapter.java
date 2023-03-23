@@ -1,7 +1,6 @@
 package com.example.inmyfridge.recipes.viewadapters;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.inmyfridge.R;
-import com.example.inmyfridge.data.DataHolder;
-import com.example.inmyfridge.foods.models.Product;
+import com.example.inmyfridge.data.model.Product;
 import com.example.inmyfridge.recipes.NewRecipeActivity;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class RecipeProductListAdapter extends ArrayAdapter<Product> {
     private final Activity context;
@@ -38,6 +33,7 @@ public class RecipeProductListAdapter extends ArrayAdapter<Product> {
         TextView nameText = rowView.findViewById(R.id.list_item_new_recipe_product_select_name);
         nameText.setText(products.get(position).getName());
         CheckBox checkBox = rowView.findViewById(R.id.list_item_new_recipe_product_select_checkbox);
+
         if(selectedProducts.contains(products.get(position))){
             checkBox.setChecked(true);
         }

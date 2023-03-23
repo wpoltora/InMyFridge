@@ -1,25 +1,50 @@
-package com.example.inmyfridge.foods.models;
+package com.example.inmyfridge.data.model;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.UUID;
 
+@Entity
 public class ProductUnit {
+    @NonNull
+    @PrimaryKey
+    private UUID id;
+    private UUID productId;
     private int weight;
+    @Nullable
     private Bitmap image;
-    private Bitmap barcode;
+    @Nullable
+    private String barcode;
     //store value after checking if the weight of a product is set or it's loose - for example weighed vegetables
     private boolean isLoose;
-    private UUID id;
-    private UUID parentId;
+    int count = 0;
 
-    public ProductUnit(int weight, Bitmap image, Bitmap barcode, boolean isLoose, UUID parentId) {
+    public ProductUnit(int weight, Bitmap image, String barcode, boolean isLoose, UUID productId) {
         this.id = UUID.randomUUID();
         this.weight = weight;
         this.image = image;
         this.barcode = barcode;
         this.isLoose = isLoose;
-        this.parentId = parentId;
+        this.productId = productId;
+    }
+
+    public void increaseCount(int count) {
+        this.count += count;
+    }
+
+    public void decreaseCount(int count){this.count -= count;}
+
+    public int getCount(){
+        return this.count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public ProductUnit(ProductUnitBuilder builder){
@@ -28,11 +53,19 @@ public class ProductUnit {
         this.image = builder.image;
         this.barcode = builder.barcode;
         this.isLoose = builder.isLoose;
-        this.parentId = builder.parentId;
+        this.productId = builder.productId;
     }
 
     public int getWeight() {
         return weight;
+    }
+
+    public void setId(@NonNull UUID id) {
+        this.id = id;
+    }
+
+    public void setParentId(UUID parentId) {
+        this.productId = parentId;
     }
 
     public void setWeight(int weight) {
@@ -47,11 +80,11 @@ public class ProductUnit {
         this.image = image;
     }
 
-    public Bitmap getBarcode() {
+    public String getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(Bitmap barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
@@ -67,15 +100,16 @@ public class ProductUnit {
         return this.id;
     }
 
-    public UUID getParentId(){return this.parentId;}
+
+    public UUID getProductId(){return this.productId;}
 
     /**BUILDER*/
     public static class ProductUnitBuilder{
         private int weight;
         private Bitmap image;
-        private Bitmap barcode;
+        private String barcode;
         private boolean isLoose;
-        private UUID parentId;
+        private UUID productId;
 
         public ProductUnitBuilder() {
         }
@@ -89,7 +123,7 @@ public class ProductUnit {
             this.image = image;
             return this;
         }
-        public ProductUnitBuilder barcode(Bitmap barcode){
+        public ProductUnitBuilder barcode(String barcode){
             this.barcode = barcode;
             return this;
         }
@@ -99,7 +133,7 @@ public class ProductUnit {
         }
 
         public ProductUnitBuilder parentId(UUID parentId){
-            this.parentId = parentId;
+            this.productId = parentId;
             return this;
         }
 
